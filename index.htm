@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Page</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        .circle {
+            width: 64px;
+            height: 64px;
+            background-color: red;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="circle">stuff</div>
+    <script>
+        const circle = document.querySelector('.circle');
+        const speed = 1000; // 10 seconds
+        const randomPosition = () => {
+            const x = Math.random() * (window.innerWidth - 64);
+            const y = Math.random() * (window.innerHeight - 64);
+            return { x, y };
+        };
+        const moveCircle = () => {
+            const { x, y } = randomPosition();
+            circle.style.transform = `translate(${x}px, ${y}px)`;
+        };
+        setInterval(moveCircle, speed);
+        moveCircle();
+    </script>
+</body>
+</html>
